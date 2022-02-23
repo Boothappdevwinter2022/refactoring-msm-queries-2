@@ -12,14 +12,18 @@
 #  updated_at  :datetime         not null
 #  director_id :integer
 #
+
 class Movie < ApplicationRecord
-  def director
-    key = self.director_id
+  belongs_to(:director)
+  has_many(:characters)
 
-    matching_set = Director.where({ :id => key })
+  # def director
+  #   key = self.director_id
 
-    the_one = matching_set.at(0)
+  #   matching_set = Director.where({ :id => key })
 
-    return the_one
-  end
+  #   the_one = matching_set.at(0)
+
+  #   return the_one
+  # end
 end
